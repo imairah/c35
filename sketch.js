@@ -1,5 +1,8 @@
 var hypnoticBall, database;
 var position;
+var gameState = 0;
+var playerCount;
+var form, player, game;
 
 
 function setup(){
@@ -7,12 +10,9 @@ function setup(){
   console.log(database);
   createCanvas(500,500);
 
-  hypnoticBall = createSprite(250,250,10,10);
-  hypnoticBall.shapeColor = "red";
-
-
-  var hypnoticBallPosition = database.ref('ball/position');
-  hypnoticBallPosition.on("value", readPosition, showError);
+ game = new Game();
+ game.getState();
+ game.start();
 }
 
 function draw(){
